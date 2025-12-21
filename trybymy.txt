@@ -269,3 +269,84 @@ git push -u origin main
    90  cd ..
    91  clear
    92  history
+admin@ip-172-31-1-109:~/hpc$ history
+    1  clear
+    2  sudo apt update
+    3  sudo apt install git -y
+    4  git config --global init.defaultBranch main
+    5  sudo git config --global init.defaultBranch main
+    6  clear
+    7  mkdir hpc
+    8  cd hpc
+    9  git init
+   10  ssh-keygen
+   11  sudo cat /home/admin/.ssh/id_ed25519.pub
+   12  git remote add origin git@github.com:varad223/labprac.git
+   13  clear
+   14  git pull origin main
+   15  git config --global user.email "varadsuryawanshi22@gmail.com"
+   16  git config --global user.name "varad223"
+   17  git pull origin main
+   18  ls -la
+   19  clear
+   20  ls -l
+   21  sudo nano Jenkinsfile
+   22  clear
+   23  sudo nano Dockerfile
+   24  git status
+   25  git add .
+   26  git status
+   27  git commit -m "jenkins and docker"
+   28  git status
+   29  git push origin main
+   30  clear
+   31  ls
+   32  git status
+   33  git add .
+   34  git status
+   35  git commit -m "jenkins and docker"
+   36  git push origin main
+   37  git pull
+   38  git pull origin main
+   39  git push origin main
+   40  ls -l
+   41  git remote -v
+   42  cat Dockerfile
+   43  clear
+   44  history
+admin@ip-172-31-13-223:~$ history
+    1  clear
+    2  sudo apt update
+    3  sudo apt install fontconfig openjdk-21-jre
+    4  java -version
+    5  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    6  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+    7  sudo apt update
+    8  sudo apt install Jenkins -y
+    9  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+   10  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+   11  sudo apt update
+   12  sudo apt install Jenkins -y
+   13  sudo apt updateclear
+   14  clear
+   15  sudo apt update
+   16  sudo apt install fontconfig openjdk-21-jre
+   17  java -version
+   18  which jenkins
+   19  sudo which jenkins
+   20  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+   21  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+   22  sudo apt update
+   23  sudo apt install jenkins
+   24  java -version
+   25  clear
+   26  ip a
+   27  cat /var/lib/jenkins/secrets/initialAdminPassword
+   28  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   29  sudo apt install git -y
+   30  clear
+   31  sudo apt install docker.io -y
+   32  sudo usermod -aG docker jenkins
+   33  clear
+   34  sudo systemctl restart jenkins
+   35  history
