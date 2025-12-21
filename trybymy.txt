@@ -143,3 +143,129 @@ $ history
    81  git push origin main
    82  git status
    83  history
+
+HTTP
+…or create a new repository on the command line
+echo "# labprac" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/varad223/labprac.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/varad223/labprac.git
+git branch -M main
+git push -u origin main
+
+SSH
+…or create a new repository on the command line
+echo "# labprac" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:varad223/labprac.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin git@github.com:varad223/labprac.git
+git branch -M main
+git push -u origin main
+
+
+
+[ec2-user@ip-172-20-5-161 ~]$ history
+    1  clear
+    2  ip a
+    3  sudo yum install curl -y
+    4  sudo curl http://172.20.10.145
+    5  clear
+    6  sudo curl http://172.20.10.145
+    7  ip a
+    8  clear
+    9  sudo yum update -y
+   10  which git
+   11  clear
+   12  mkdir do
+   13  ls
+   14  sudo yum install git -y
+   15  clear
+   16  which git
+   17  ls -a
+   18  cd do
+   19  ls -a
+   20  clear
+   21  git init
+   22  clear
+   23  ls -la
+   24  cd ..
+   25  ls
+   26  sudo rmdir do
+   27  cd  ..
+   28  clear
+   29  sudo rm *
+   30  cd ec2-user/
+   31  cd do/
+   32  sudo rm *
+   33  ls
+   34  ls -la
+   35  sudo rm .git/
+   36  sudo rmdir .git/
+   37  clear
+   38  cd
+   39  ls
+   40  clear
+   41  mkdir doitlabs
+   42  cd doitlabs/
+   43  git init
+   44  clear
+   45  cd ..
+   46  ls
+   47  git config --global init.defaultBranch main
+   48  sudo git config --global init.defaultBranch main
+   49  clear
+   50  mkdir mylabdoit
+   51  cd mylabdoit/
+   52  git init
+   53  ls -la
+   54  clear
+   55  ssh-keygen
+   56  cat /home/ec2-user/.ssh/id_rsa.pub
+   57  clear
+   58  git remote add origin git@github.com:varad223/labprac.git
+   59  git pull origin main
+   60  git pull origin
+   61  ls -la
+   62  nano demo.txt
+   63  git pull origin main
+   64  git status
+   65  git add .
+   66  git status
+   67  git commit -m "try 1"
+   68  git push origin main
+   69  git status
+   70  git config --global user.email "varadsuryawanshi22@gmail.com"
+   71  git config --global user.name "varad223"
+   72  clear
+   73  git status
+   74  git pull origin main
+   75  git status
+   76  ls -l
+   77  clear
+   78  sudo nano demo.txt
+   79  git status
+   80  git add .
+   81  git status
+   82  git push origin main
+   83  git commit -m "try 2"
+   84  git status
+   85  git push origin main
+   86  git pull origin main
+   87  git status
+   88  clear
+   89  ls -la
+   90  cd ..
+   91  clear
+   92  history
