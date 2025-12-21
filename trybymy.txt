@@ -1,0 +1,145 @@
+sudo apt update
+sudo apt install fontconfig openjdk-21-jre
+java -version
+
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install Jenkins
+
+
+
+05bf3a29881849c3a597890b3e105916
+
+http://13.217.62.8:8080/
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPqsJ0573Bqt3XgL7LtHh0O/ACcpZsMR5PZKShajW6Xq DITISS28@DESKTOP-HLA7230
+
+
+admin@ip-172-20-5-228:/var/www$ history
+    1  clear
+    2  sudo apt update -y
+    3  clear
+    4  sudo apt update
+    5  sudo apt install fontconfig openjdk-21-jre
+    6  java -version
+    7  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    8  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+    9  sudo apt update
+   10  sudo apt install jenkins
+   11  systemctl status jenkins
+   12  systemctl restart jenkins
+   13  systemctl start jenkins
+   14  clear
+   15  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   16  which git
+   17  sudo apt install git
+   18  clear
+   19  history
+   20  sudo apt install apache2 -y
+   21  clear
+   22  cd /var/www/html/
+   23  rm index.html
+   24  sudo rm index.html
+   25  ls -la
+   26  clea
+   27  clear
+   28  cd ..
+   29  ls -l
+   30  sudo setfacl -m jenkins:rwx html/
+   31  sudo apt install setfacl -y
+   32  clear
+   33  sudo apt install acl
+   34  sudo setfacl -m jenkins:rwx html/
+   35  getfacl html/
+   36  clear
+   37  history
+
+DITISS28@DESKTOP-HLA7230 MINGW64 /f/notes/try (main)
+$ history
+    1  git --version
+    2  pwd
+    3  ls
+    4  cd Desktop/
+    5  ls
+    6  clear
+    7  mkdir gitprac
+    8  ls
+    9  cd gitprac/
+   10  git init
+   11  git status
+   12  git add steps.txt
+   13  git status
+   14  git add Screenshot\ \(1\).png
+   15  git status
+   16  git status
+   17  git status
+   18  git add .
+   19  git status
+   20  git commit -m 'first commit'
+   21  git config --global user.email "tyson@git.com"
+   22  git config --global user.name "Tyson"
+   23  git commit -m 'first commit'
+   24  git switch -c Tylon
+   25  git status
+   26  ls
+   27  git status
+   28  git commit -am 'Tylon commit'
+   29  git status
+   30  git log
+   31  git add
+   32  git add .
+   33  git restore
+   34  git add steps.txt
+   35  git logs
+   36  git log
+   37  git status
+   38  git restore steps.txt
+   39  git status
+   40  git status
+   41  ls
+   42  git status
+   43  git add
+   44  git add .
+   45  git status
+   46  git add .
+   47  git restore steps.txt
+   48  git commit -am 'Tylon commit 2'
+   49  git restore steps.txt
+   50  cat steps.txt
+   51  cat steps.txt
+   52  git status
+   53  git add
+   54  git add .
+   55  git status
+   56  git add .
+   57  git status
+   58  git commit -am 'Master commet'
+   59  git logs
+   60  git log
+   61  cd try/
+   62  ls
+   63  ls -la
+   64  clear
+   65  history
+   66  ls -la
+   67  sudo nano index.html
+   68  nano index.html
+   69  clear
+   70  git status
+   71  git add .
+   72  git pull origin main
+   73  clear
+   74  git status
+   75  git commit -m "ky-try"
+   76  git status
+   77  git push origin main
+   78  nano index.html
+   79  git add .
+   80  git commit -m "try-ky"
+   81  git push origin main
+   82  git status
+   83  history
